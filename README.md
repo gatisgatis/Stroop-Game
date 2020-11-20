@@ -1,1 +1,1 @@
-https://gatisgatis.github.io/Stroop-Game/
+https://gatisgatis.github.io/stroop-game/
