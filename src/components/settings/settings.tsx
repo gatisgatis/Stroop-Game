@@ -5,7 +5,7 @@ import { v4 as uuid } from 'uuid';
 import { Configs, defaultConfigs } from '../../typesAndData';
 
 export const SELECT_ROUND_COUNT: number[] = [];
-for (let i = 1; i < 101; i++) {
+for (let i = 2; i < 101; i++) {
   SELECT_ROUND_COUNT.push(i);
 }
 
