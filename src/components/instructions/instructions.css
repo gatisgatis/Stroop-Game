@@ -1,7 +1,7 @@
 .instructions-wrapper {
   position: absolute;
-  z-index: 3;
-  background-color: white;
+  z-index: 4;
+  background-image: linear-gradient(90deg, rgba(201,219,203,1) 0%, rgba(255,255,255,1) 50%, rgba(201,219,203,1) 100%);
   width: 40%;
   margin-left: 30%;
   margin-right: 30%;
@@ -9,6 +9,10 @@
   border-radius: 5px;
   min-height: 500px;
   top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
   animation: scaling 0.2s 1;
 }
 @keyframes scaling {
@@ -37,4 +41,17 @@
 
 .instructions__cancel:hover {
   background-color: rgba(143, 177, 146, 0.2);
+}
+
+.instr__title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.instr__text {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
 }

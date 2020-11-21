@@ -187,7 +187,11 @@ const App = () => {
       setTimeout(() => {
         setWordToShow(gameData[0]);
         setGameStage('active');
-        setGameSection({ ...gameSection, preGameAnimation: false });
+        setGameSection({
+          ...gameSection,
+          preGameAnimation: false,
+          introGifwindow: false,
+        });
       }, 2000);
     } else {
       setGameStage('before');
@@ -300,6 +304,16 @@ const App = () => {
       </header>
       <section>
         <div className="container container-fluid main">
+          {gameSection.introGifwindow && gameStage === 'before' && (
+            <div className="intro-animation">
+              <span style={{ color: 'red' }}>S</span>
+              <span style={{ color: 'green' }}>T</span>
+              <span style={{ color: 'orange' }}>R</span>
+              <span style={{ color: 'yellow' }}>O</span>
+              <span style={{ color: 'blue' }}>O</span>
+              <span style={{ color: 'pink' }}>P</span>
+            </div>
+          )}
           <div className="row">
             <div className="col-xs-12">
               {gameStage === 'active' && (
@@ -321,6 +335,17 @@ const App = () => {
             </button>
           </div>
           <div className="game-window">
+            {(gameStage === 'before' || gameStage === 'end') &&
+              !gameSection.introGifwindow && (
+                <div className="game-window-logo">
+                  <span style={{ color: 'red' }}>S</span>
+                  <span style={{ color: 'green' }}>T</span>
+                  <span style={{ color: 'orange' }}>R</span>
+                  <span style={{ color: 'yellow' }}>O</span>
+                  <span style={{ color: 'blue' }}>O</span>
+                  <span style={{ color: 'pink' }}>P</span>
+                </div>
+              )}
             {gameSection.preGameAnimation && (
               <div className="pre-game-animation">GO</div>
             )}
@@ -351,7 +376,10 @@ const App = () => {
                           className="play-btn"
                           type="button"
                           onClick={() => colorButtonsClickHandler(color)}
-                          style={{ backgroundColor: color }}
+                          style={{
+                            backgroundColor:
+                              configs.dificulty === 'easy' ? color : 'white',
+                          }}
                         >
                           {color.toUpperCase()}
                         </button>

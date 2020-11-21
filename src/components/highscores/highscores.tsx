@@ -15,7 +15,8 @@ type Props = {
 export const HighScores: FC<Props> = ({ cancelClick, scores }) => {
   return (
     <div className="highscores-wrapper">
-      HIGHSCORES
+      <div className="highscores__title">BEST RESULTS</div>
+      <div className="highscores__categories">Place/Name/Result</div>
       <button
         type="button"
         onClick={cancelClick}
@@ -26,7 +27,7 @@ export const HighScores: FC<Props> = ({ cancelClick, scores }) => {
       {scores.map((score, index) => {
         return (
           <div key={uuid()} className="highscore__line">
-            {index + 1}. {score.name} {score.result}
+            {index + 1}. {score.name} {(score.result*100).toFixed(2)}%
           </div>
         );
       })}

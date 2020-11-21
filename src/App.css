@@ -78,7 +78,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 4;
 }
 
 .main {
@@ -131,6 +131,36 @@
   overflow: hidden;
 }
 
+.game-window-logo {
+  font-size: 200px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.intro-animation {
+  position: absolute;
+  font-size: 200px;
+  font-weight: bold;
+  background-color:  rgb(143, 177, 146);
+  width: 95%;
+  text-align: center;
+  top: 200px;
+  height: 600px;
+  z-index: 2;
+  animation: intro 2s infinite;
+  overflow: hidden;
+}
+
+@keyframes intro {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 .time-effect-line {
   width: 0;
   height: 8px;
@@ -155,6 +185,7 @@
   animation: fancy 1.8s 1;
   animation-timing-function: linear;
   transform: scale(0);
+  color: rgb(143, 177, 146);
 }
 
 @keyframes fancy {

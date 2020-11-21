@@ -36,7 +36,7 @@ export const EndPopUp: FC<Props> = ({
       <div className='popup__content'> Round Count: {roundCount}</div>
       <div className='popup__content'> Total Colors: {colorCount}</div>
       <div className='popup__content'> Dificulty: {dificulty}</div>
-      <div className='popup__content'> Your scored {result}%! Congrats!</div>
+      <div className='popup__content'> Your scored {(result*100).toFixed(2)}%! Congrats!</div>
       <div className='popup__content'> </div>
       <div className='popup__input-label'>Enter Your name to save your score</div>
       <input
