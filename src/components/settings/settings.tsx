@@ -127,6 +127,7 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
         <label htmlFor="lang" className="settings__label">
           LANGUAGE:
           <select
+            disabled
             className="settings__select"
             name="lang"
             id="lang"

@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable react/jsx-curly-newline */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
+// import soundfile from 'beep.mp3';
 import './App.css';
 import Settingz from './components/settings/settings';
 import { HighScores, HighScore } from './components/highscores/highscores';
@@ -66,6 +69,10 @@ const defaultSections: Sections = {
 
 let activeTimeOut: NodeJS.Timeout;
 
+const beep = new Audio(
+  'https://drive.google.com/uc?id=1lEIxMjZxMy2WL0th14ZORvJaIdaAlvbK&export=download'
+);
+
 const App = () => {
   const [configs, setConfigs] = useState<Configs>(defaultConfigs);
   const [wordToShow, setWordToShow] = useState<GameData>(defaultGameData);
@@ -73,18 +80,6 @@ const App = () => {
   const [gameStage, setGameStage] = useState<
     'before' | 'pre-active' | 'active' | 'end'
   >('before');
-
-  // const afterRoundAnimationHandler = () => {
-  //   pressedKeyOrBtn === gameData[roundCounter - 1].color ||
-  //   pressedKeyOrBtn ===
-  //     ALL_KEYS[ALL_COLORS.indexOf(gameData[roundCounter - 1].color)]
-  //     ? (roundEffectInfo = 'Perfect!')
-  //     : (roundEffectInfo = 'Fail!');
-  //   setRoundEffect(true);
-  //   setTimeout(() => {
-  //     setRoundEffect(false);
-  //   }, 500);
-  // };
 
   useEffect(() => {
     if (configs.gamemode === 'keyboard') {
@@ -101,7 +96,6 @@ const App = () => {
 
   // Aizpilda datu masīvu, kas zīmēs spēli
   useEffect(() => {
-    console.log(configs);
     if (gameStage !== 'pre-active') return;
     roundCounter = 0;
     for (let i = 0; i < configs.roundCount; i += 1) {
@@ -119,16 +113,16 @@ const App = () => {
 
   // Nodrošina spēles loģiku un Ingame Efektus
   useEffect(() => {
-    // Nodrošina, ka šis useEffect NEnostrādās divas reizes uz MOUNT
+    // Nodrošina, ka šis useEffect NEnostrādās uz MOUNT
     if (helper < 1) {
       helper = 1;
       return;
     }
+    if (configs.sound === 'on') beep.play();
     if (roundCounter >= configs.roundCount - 1) {
       activeTimeOut = setTimeout(() => {
         pressedKeysOrBtns[roundCounter] = pressedKeyOrBtn;
         pressedKeyOrBtn = '-';
-        console.log(pressedKeyOrBtn, pressedKeysOrBtns, gameData, buttonInfo);
         finalResult = calculateGameResult();
         setGameStage('end');
         setGameSection({
@@ -178,7 +172,6 @@ const App = () => {
 
   const bigBtnClickHandler = () => {
     if (gameStage !== 'active') {
-      // Sākas animācija neliela
       setGameSection({
         ...gameSection,
         introGifwindow: false,
@@ -209,7 +202,11 @@ const App = () => {
       return 1;
     });
     localStorage.setItem('ls-highScores', '');
-    setGameSection({ ...gameSection, endGameResults: false, highScoresTablo: true });
+    setGameSection({
+      ...gameSection,
+      endGameResults: false,
+      highScoresTablo: true,
+    });
   };
 
   return (
@@ -223,8 +220,8 @@ const App = () => {
                 <img src={logo} alt="LOGO" className="logo" />
               </div>
             </div>
-            <div className="col-xs-12 col-md-8 flexbox center-xs end-md">
-              <div className="header__button-wrapper">
+            <div className="col-xs-12 col-md-8 flexbox center-xs">
+              <div className="header__button-wrapper end-md center-xs">
                 <button
                   type="button"
                   className="header__button howtoplay-button"
@@ -308,16 +305,6 @@ const App = () => {
       </header>
       <section>
         <div className="container container-fluid main">
-          {gameSection.introGifwindow && gameStage === 'before' && (
-            <div className="intro-animation">
-              <span style={{ color: 'red' }}>S</span>
-              <span style={{ color: 'green' }}>T</span>
-              <span style={{ color: 'orange' }}>R</span>
-              <span style={{ color: 'yellow' }}>O</span>
-              <span style={{ color: 'blue' }}>O</span>
-              <span style={{ color: 'pink' }}>P</span>
-            </div>
-          )}
           <div className="row">
             <div className="col-xs-12">
               {gameStage === 'active' && (
@@ -340,6 +327,21 @@ const App = () => {
             </button>
           </div>
           <div className="game-window">
+            {gameSection.introGifwindow && gameStage === 'before' && (
+              <div
+                className="intro-animation"
+                onClick={() =>
+                  setGameSection({ ...gameSection, introGifwindow: false })
+                }
+              >
+                <span style={{ color: 'red' }}>S</span>
+                <span style={{ color: 'green' }}>T</span>
+                <span style={{ color: 'orange' }}>R</span>
+                <span style={{ color: 'yellow' }}>O</span>
+                <span style={{ color: 'blue' }}>O</span>
+                <span style={{ color: 'pink' }}>P</span>
+              </div>
+            )}
             {(gameStage === 'before' || gameStage === 'end') &&
               !gameSection.introGifwindow && (
                 <div className="game-window-logo">
