@@ -95,15 +95,15 @@
     width: 95%;
     margin-left: 2.5%;
     margin-right: 2.5%;
-    top: 50px;
+    top: 25px;
   }
   .popup__title{
     font-size: 25px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
   .popup__content{
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   .popup__input-label{
     font-size: 12px;
