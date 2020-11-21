@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/stroop-game/static/css/main.eac6fdc6.chunk.css",
+    "main.css": "/stroop-game/static/css/main.6e62a050.chunk.css",
     "main.js": "/stroop-game/static/js/main.4db7a832.chunk.js",
     "main.js.map": "/stroop-game/static/js/main.4db7a832.chunk.js.map",
     "runtime-main.js": "/stroop-game/static/js/runtime-main.fa14af35.js",
@@ -10,14 +10,14 @@
     "static/js/3.35311492.chunk.js": "/stroop-game/static/js/3.35311492.chunk.js",
     "static/js/3.35311492.chunk.js.map": "/stroop-game/static/js/3.35311492.chunk.js.map",
     "index.html": "/stroop-game/index.html",
-    "static/css/main.eac6fdc6.chunk.css.map": "/stroop-game/static/css/main.eac6fdc6.chunk.css.map",
+    "static/css/main.6e62a050.chunk.css.map": "/stroop-game/static/css/main.6e62a050.chunk.css.map",
     "static/js/2.9f6ce72c.chunk.js.LICENSE.txt": "/stroop-game/static/js/2.9f6ce72c.chunk.js.LICENSE.txt",
     "static/media/logo.a3ce597d.png": "/stroop-game/static/media/logo.a3ce597d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.fa14af35.js",
     "static/js/2.9f6ce72c.chunk.js",
-    "static/css/main.eac6fdc6.chunk.css",
+    "static/css/main.6e62a050.chunk.css",
     "static/js/main.4db7a832.chunk.js"
   ]
 }
