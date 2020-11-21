@@ -41,10 +41,10 @@ let helper = 0;
 const highScores: HighScore[] = [];
 let newestScore: HighScore;
 
-// if (localStorage.getItem('ls-highScores')) {
-//   // @ts-ignore
-//   highScores.push(...JSON.parse(localStorage.getItem('ls-highScores')));
-// }
+if (localStorage.getItem('ls-highScores')) {
+  // @ts-ignore
+  highScores.push(...JSON.parse(localStorage.getItem('ls-highScores')));
+}
 
 type Sections = {
   highScoresTablo: boolean;
