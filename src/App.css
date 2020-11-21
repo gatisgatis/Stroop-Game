@@ -115,6 +115,10 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.big-btn:disabled {
+  cursor: not-allowed;
+}
+
 .game-window {
   position: relative;
   width: 90%;
@@ -136,7 +140,23 @@
   font-weight: bold;
   width: 100%;
   text-align: center;
+  animation: abcd 1s 1;
 }
+
+@keyframes abcd {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
 
 .intro-animation {
   position: absolute;

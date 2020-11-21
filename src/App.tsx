@@ -39,11 +39,12 @@ let finalResult: number = 0;
 let helper = 0;
 
 const highScores: HighScore[] = [];
+let newestScore: HighScore;
 
-if (localStorage.getItem('ls-highScores')) {
-  // @ts-ignore
-  highScores.push(...JSON.parse(localStorage.getItem('ls-highScores')));
-}
+// if (localStorage.getItem('ls-highScores')) {
+//   // @ts-ignore
+//   highScores.push(...JSON.parse(localStorage.getItem('ls-highScores')));
+// }
 
 type Sections = {
   highScoresTablo: boolean;
@@ -200,13 +201,15 @@ const App = () => {
   };
 
   const saveResult = (name: string) => {
-    highScores.push({ name, result: finalResult });
+    const checkedName = name || 'No Name';
+    newestScore = { name: checkedName, result: finalResult };
+    highScores.push(newestScore);
     highScores.sort((prev, next) => {
       if (prev.result > next.result) return -1;
       return 1;
     });
-    localStorage.setItem('ls-highScores', JSON.stringify(highScores));
-    setGameSection({ ...gameSection, endGameResults: false });
+    localStorage.setItem('ls-highScores', '');
+    setGameSection({ ...gameSection, endGameResults: false, highScoresTablo: true });
   };
 
   return (
@@ -282,6 +285,7 @@ const App = () => {
                   setGameSection({ ...gameSection, highScoresTablo: false })
                 }
                 scores={highScores}
+                newestScore={newestScore}
               />
             </div>
           )}
@@ -327,6 +331,7 @@ const App = () => {
             <button
               type="button"
               className="big-btn"
+              disabled={gameStage === 'pre-active'}
               onClick={bigBtnClickHandler}
             >
               {gameStage === 'pre-active' || gameStage === 'active'

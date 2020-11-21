@@ -30,10 +30,16 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
 
   return (
     <div className="settings-wrapper">
-      <form action="submit" onSubmit={(event) => onSubmit(event, formValues)} className='settings__form'>
-        <label htmlFor="round-count">
+      <div className="settings__title">SETTINGS</div>
+      <form
+        action="submit"
+        onSubmit={(event) => onSubmit(event, formValues)}
+        className="settings__form"
+      >
+        <label htmlFor="round-count" className="settings__label">
           ROUND COUNT:
           <select
+            className="settings__select"
             name="round-count"
             id="round-count"
             value={formValues.roundCount}
@@ -53,9 +59,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             })}
           </select>
         </label>
-        <label htmlFor="color_count">
+        <label htmlFor="color_count" className="settings__label">
           COLOR COUNT:
           <select
+            className="settings__select"
             name="color_count"
             id="color_count"
             value={formValues.colorCount}
@@ -75,9 +82,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             })}
           </select>
         </label>
-        <label htmlFor="delay">
+        <label htmlFor="delay" className="settings__label">
           DELAY:
           <select
+            className="settings__select"
             name="delay"
             id="delay"
             value={formValues.delay}
@@ -97,9 +105,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             })}
           </select>
         </label>
-        <label htmlFor="gamemode">
+        <label htmlFor="gamemode" className="settings__label">
           Game Mode:
           <select
+            className="settings__select"
             name="gamemode"
             id="gamemode"
             value={formValues.gamemode}
@@ -115,9 +124,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             <option value="keyboard">Keyboard</option>
           </select>
         </label>
-        <label htmlFor="lang">
+        <label htmlFor="lang" className="settings__label">
           LANGUAGE:
           <select
+            className="settings__select"
             name="lang"
             id="lang"
             value={formValues.language}
@@ -133,9 +143,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             <option value="en">EN</option>
           </select>
         </label>
-        <label htmlFor="dif">
+        <label htmlFor="dif" className="settings__label">
           DIFICULTY:
           <select
+            className="settings__select"
             name="dif"
             id="dif"
             value={formValues.dificulty}
@@ -151,9 +162,10 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             <option value="hard">HARD</option>
           </select>
         </label>
-        <label htmlFor="sound">
+        <label htmlFor="sound" className="settings__label">
           SOUND:
           <select
+            className="settings__select"
             name="sound"
             id="sound"
             value={formValues.sound}
@@ -169,11 +181,21 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
             <option value="off">OFF</option>
           </select>
         </label>
-        <button type="submit">OK</button>
-        <button type="button" onClick={cancelClick} className='settings__cancel'>
+        <button type="submit" className="settings__button">
+          OK
+        </button>
+        <button
+          type="button"
+          onClick={cancelClick}
+          className="settings__cancel"
+        >
           X
         </button>
-        <button type="button" onClick={() => setFormValues(defaultConfigs)}>
+        <button
+          type="button"
+          onClick={() => setFormValues(defaultConfigs)}
+          className="settings__button"
+        >
           Restore Defaults
         </button>
       </form>

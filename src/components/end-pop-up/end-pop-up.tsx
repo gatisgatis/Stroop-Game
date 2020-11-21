@@ -43,6 +43,7 @@ export const EndPopUp: FC<Props> = ({
         className="popup__input"
         type="text"
         value={inputValue}
+        placeholder="Enter Your Name"
         autoFocus
         onChange={(e) => setInputValue(e.target.value)}
       />

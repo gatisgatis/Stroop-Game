@@ -10,9 +10,10 @@ export type HighScore = {
 type Props = {
   cancelClick: () => void;
   scores: HighScore[];
+  newestScore: HighScore;
 };
 
-export const HighScores: FC<Props> = ({ cancelClick, scores }) => {
+export const HighScores: FC<Props> = ({ cancelClick, scores, newestScore }) => {
   return (
     <div className="highscores-wrapper">
       <div className="highscores__title">BEST RESULTS</div>
@@ -24,12 +25,21 @@ export const HighScores: FC<Props> = ({ cancelClick, scores }) => {
       >
         X
       </button>
-      {scores.map((score, index) => {
-        return (
-          <div key={uuid()} className="highscore__line">
-            {index + 1}. {score.name} {(score.result*100).toFixed(2)}%
-          </div>
-        );
+      {scores.map((score, index: number) => {
+        if (index < 10) {
+          return (
+            <div
+              key={uuid()}
+              className={`highscore__line ${
+                score === newestScore && 'decoration'
+              }`}
+            >
+              {index + 1}. {score.name.substring(0, 12)}{' '}
+              {(score.result * 100).toFixed(2)}%
+            </div>
+          );
+        }
+        return <div key={uuid()} />;
       })}
     </div>
   );
