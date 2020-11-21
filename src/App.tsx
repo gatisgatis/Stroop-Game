@@ -4,7 +4,6 @@
 /* eslint-disable react/jsx-curly-newline */
 import React, { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
-// import soundfile from 'beep.mp3';
 import './App.css';
 import Settingz from './components/settings/settings';
 import { HighScores, HighScore } from './components/highscores/highscores';
@@ -127,7 +126,7 @@ const App = () => {
         setGameStage('end');
         setGameSection({
           ...gameSection,
-          endGameResults: true,
+          endGameResults: true
         });
       }, configs.delay * 1000);
       return;
@@ -201,7 +200,7 @@ const App = () => {
       if (prev.result > next.result) return -1;
       return 1;
     });
-    localStorage.setItem('ls-highScores', '');
+    localStorage.setItem('ls-highScores', JSON.stringify(highScores));
     setGameSection({
       ...gameSection,
       endGameResults: false,
