@@ -106,7 +106,7 @@ const Settingz: FC<Props> = ({ onSubmit, cancelClick, nowValues }) => {
           </select>
         </label>
         <label htmlFor="gamemode" className="settings__label">
-          Game Mode:
+          GAME MODE:
           <select
             className="settings__select"
             name="gamemode"
