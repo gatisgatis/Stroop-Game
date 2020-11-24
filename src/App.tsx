@@ -126,7 +126,7 @@ const App = () => {
         setGameStage('end');
         setGameSection({
           ...gameSection,
-          endGameResults: true
+          endGameResults: true,
         });
       }, configs.delay * 1000);
       return;
@@ -139,6 +139,11 @@ const App = () => {
     }, configs.delay * 1000);
   }, [wordToShow]);
 
+  // KĀPĒC ŠEIT IR WARNINGS UN KĀ TAS JĀRISINA?
+  // KĀ TO BEEP.mp3 FAILU DABŪT ŠEIT, LAI STRĀDĀ...
+  // KĀ CĪNĪTIES AR TIEM DAUDZAJIEM ESLINT ERRORIEM, KURUS FAILA AUGŠĀ ESMU IGNORĒJIS
+  // 
+
   const colorButtonsClickHandler = (btnColor: string) => {
     pressedKeyOrBtn = btnColor;
   };
@@ -146,9 +151,9 @@ const App = () => {
   const calculateGameResult = () => {
     const playersColors = [...convertKeysToColors()];
     const gameColors = gameData.map((round) => round.color);
-    const succes = gameColors.filter(
-      (color, index) => color === playersColors[index]
-    ).length;
+    const succes = gameColors.filter((color, index) => {
+      return color === playersColors[index] && index < configs.roundCount;
+    }).length;
     return succes / configs.roundCount;
   };
 
@@ -196,10 +201,7 @@ const App = () => {
     const checkedName = name || 'No Name';
     newestScore = { name: checkedName, result: finalResult };
     highScores.push(newestScore);
-    highScores.sort((prev, next) => {
-      if (prev.result > next.result) return -1;
-      return 1;
-    });
+    highScores.sort((prev, next) => (prev.result > next.result ? -1 : 1));
     localStorage.setItem('ls-highScores', JSON.stringify(highScores));
     setGameSection({
       ...gameSection,
