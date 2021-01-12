@@ -1,5 +1,5 @@
 Annoying Stroop color game. 
-My first responsive game design and experimnets with basic css animations
+My first responsive game design with React and experimnets with basic css animations
 
 Features:
   -Mobile friendly
